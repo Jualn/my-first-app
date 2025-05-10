@@ -134,3 +134,8 @@ REST_FRAMEWORK = {
 # 关闭simpleui广告
 SIMPLEUI_HOME_INFO = False
 SIMPLEUI_ANALYSIS = False
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
