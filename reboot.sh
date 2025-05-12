@@ -14,7 +14,7 @@ sleep 0.5
 
 echo -e '\n--------------check if the kill action is correct--------------'
 
-/envs/文件名/bin/uwsgi --ini smartCampus_backend_uwsgi.ini & >/dev/null
+/envs/jualn_env/bin/uwsgi --ini smartCampus_backend_uwsgi.ini & >/dev/null
 
 echo -e '\n\033[42;1m--------------started...--------------\033[0m'
 
