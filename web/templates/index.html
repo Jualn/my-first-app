@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clock</title>
+    <link rel="stylesheet" href="{% static 'index.css' %}" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="clock">
+        <div id="time">00:00:00</div>
+        <div id="day">Monday</div>
+        <div id="date">01 Jan 2025</div>
+      </div>
+
+    </div>
+
+    <script>
+      function updateClock() {
+        const now = new Date();
+
+        const time = now.toLocaleTimeString("en-US", { hour12: false });
+        const day = now.toLocaleDateString("en-US", { weekday: "long" });
+        const date = now.toLocaleDateString("en-US", {
+          day: "2-digit",
+          month: "short",
+          year: "numeric",
+        });
+
+        document.getElementById("time").textContent = time;
+        document.getElementById("day").textContent = day;
+        document.getElementById("date").textContent = date;
+      }
+
+      setInterval(updateClock, 1000);
+      updateClock(); // Initial call
+    </script>
+  </body>
+</html>

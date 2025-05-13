@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -55,7 +56,7 @@ ROOT_URLCONF = 'smartCampus_backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': []  # BASE_DIR / 'templates'
+        'DIRS': [BASE_DIR / 'web/templates']  # BASE_DIR / 'templates'
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -114,7 +115,10 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'web/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'web/static'),
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -122,10 +126,12 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ## 开启media访问--》配置
-import os
+
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
 REST_FRAMEWORK = {
     'DEFAULT_VERSIONING_CLASS': "rest_framework.versioning.QueryParameterVersioning",
     'NON_FIELD_ERRORS_KEY': 'xxx',
